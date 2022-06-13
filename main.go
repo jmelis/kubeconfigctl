@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 
 	"gopkg.in/yaml.v3"
@@ -42,7 +43,7 @@ func contextInfo(c *Context) string {
 
 func main() {
 	var kc KubeConfig
-	kubefile := "/Users/jmelis/.kube/config"
+	kubefile := os.Getenv("HOME") + "/.kube/config"
 
 	yamlFile, err := ioutil.ReadFile(kubefile)
 	if err != nil {
